@@ -15,8 +15,16 @@
   "bin": {
     "uppercaseme": "./bin/pzn-validator"
   },
+  "scripts": {
+    "test": "make test"
+  },
   "dependencies": {},
   "engines": {
     "node": "*"
-  }
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  },
+  "license": "MIT"
 }
