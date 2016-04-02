@@ -1,0 +1,22 @@
+{
+  "author": "Tobias Fiebiger",
+  "name": "pzn-validator",
+  "description": "Validates if a given number is a PZN",
+  "version": "1.0",
+  "repository": {
+    "url": "https://github.com/scholt/node-pzn-validator"
+  },
+  "main": "./lib/pzn-validator",
+  "keywords": [
+    "pzn",
+    "validator",
+    "pharmazentralnummer"
+  ],
+  "bin": {
+    "uppercaseme": "./bin/pzn-validator"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
