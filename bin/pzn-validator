@@ -1,8 +1,19 @@
 #!/usr/bin/env node
 
-"use strict";
-var path = require('path');
 var fs = require('fs');
+var path = require('path');
 var lib = path.join(path.dirname(fs.realpathSync(__filename)), '../lib');
+var isValidPZN = require(lib + '/pzn-validator.js');
 
-require(lib+'/pzn-validator.js').isValidPZN();
+if(process.argv.length > 2) {
+    // Read the first additional argument passed to the program
+    var isThisPzn = isValidPZN(process.argv[2]); 
+
+    if(isValidPZN(isThisPzn)) {
+        console.log(isThisPzn + " is a valid PZN");
+    } else {
+        console.log(isThisPzn + " is not a valid PZN");
+    }
+} else {
+    console.log("ERROR: please supply a pzn to be checked");
+}
