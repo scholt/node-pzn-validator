@@ -1,25 +1,47 @@
-var validator = require('../lib/pzn-validator'),
-	check = validator.isValidPZN;
+var should = require('chai').should(),
+	val = require('../lib/pzn-validator'),
+	check = val.isValidPZN;
 
-describe('#isValidPZN()', function() {
-  
-  it('returns true for 10203632', function() {
-    validator.isValidPZN(10203632).to.equal(true);
-  });
-  
-  it('returns true for 4114918', function() {
-    check('4114918').to.equal(true);
-  });
 
-  it('returns true for 1234567', function() {
-    check('1234567').to.equal(false);
-  });
-  
-  it('returns true for 12345678', function() {
-    check('12345678').to.equal(false);
-  });
-  
-  it('returns false for futzlibutzli', function() {
-    check('futzlibutzli').to.equal(false);
-  });
+describe('#isValidPZN() - check correct inputs', function() {
+	describe('check correct inputs as integer', function() {
+		it('should return true for 10203632', function() {
+			check(10203632).should.be.true;
+		});
+		it('should return true for 4114918', function() {
+			check(4114918).should.be.true;
+		});
+	});
+	describe('check correct inputs as string', function() {
+		it('should return true for \'10203632\'', function() {
+			check('10203632').should.be.true;
+		});
+		it('should return true for \'4114918\'', function() {
+			check('4114918').should.be.true;
+		});
+	});
+	describe('check false inputs for errors as integer', function() {
+		it('should return false for 1234567', function() {
+			check(1234567).should.be.false;
+		});
+		it('should return false for 12341234', function() {
+			check(12341234).should.be.false;
+		});
+	});
+	describe('check false inputs for errors', function() {
+		it('should return false for \'1234567\'', function() {
+			check(1234567).should.be.false;
+		});
+
+		it('should return false for \'12341234\'', function() {
+			check(12341234).should.be.false;
+		});
+
+		it('should return false for \'futzlibutzli\'', function() {
+			check('futzlibutzli').should.be.false;
+		});
+	});
 });
+
+
+

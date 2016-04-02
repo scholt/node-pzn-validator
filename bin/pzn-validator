@@ -3,13 +3,12 @@
 var fs = require('fs');
 var path = require('path');
 var lib = path.join(path.dirname(fs.realpathSync(__filename)), '../lib');
-var isValidPZN = require(lib + '/pzn-validator.js');
+var validator = require(lib + '/pzn-validator.js');
 
 if(process.argv.length > 2) {
-    // Read the first additional argument passed to the program
-    var isThisPzn = isValidPZN(process.argv[2]); 
+    var isThisPzn =  process.argv[2]; 
 
-    if(isValidPZN(isThisPzn)) {
+    if(validator.isValidPZN(isThisPzn)) {
         console.log(isThisPzn + " is a valid PZN");
     } else {
         console.log(isThisPzn + " is not a valid PZN");
